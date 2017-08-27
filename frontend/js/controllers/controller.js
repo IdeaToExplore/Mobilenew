@@ -23,6 +23,18 @@ myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationServic
         name: "mobile Phone"
     }]
 
+    // IMAGE JSON
+    $scope.landingswiper = [{
+        src: "img/final1.jpg"
+    }, {
+        src: "img/final2.jpg"
+    }, {
+        src: "img/final3.jpg"
+    }, {
+        src: "img/final4.jpg"
+    }]
+    // IMAGE JSON END
+
     // HOW THE COMPANY WORKS JSON
     $scope.Workscontent = [{
         img: "fa fa-5x fa-briefcase",
@@ -57,6 +69,38 @@ myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationServic
 
     // COMPANY DATA JSON END
 
+    // STATE JSON
+    // $scope.state = ["Mumbai", "Banglore", "Chennai", "Delhi", "Gujrat", "Kerla", "Orissa", "Kolkata"];
+
+    $scope.state = [{
+        name: "Mumbai"
+    }, {
+        name: "Banglore"
+    }, {
+        name: "Chennai"
+    }, {
+        name: "Delhi"
+    }, {
+        name: "Gujrat"
+    }, {
+        name: "Kerla"
+    }, {
+        name: "Mumbai"
+    }, {
+        name: "Orissa"
+    }, {
+        name: "Kolkata"
+    }];
+    // STATE JSON END
+
+    // LOCATION
+    $timeout(function () {
+        $(".selectpicker").selectpicker({
+            "title": "Location",
+            "size": 4,
+        }).selectpicker("render");
+    }, 100);
+    // LOCATION END
 
 
     $scope.initSwiper = function () {
@@ -158,6 +202,39 @@ myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationServic
             })
         }, 100);
 
+        // SWIPER END
+
+        // LANDINPAGE-IMAGE SWIPER
+        $timeout(function () {
+            console.log('landingpage-swiper');
+            mySwiper4 = new Swiper('.landingpage-imageswiper .swiper-container', {
+                slidesPerView: 1,
+                paginationClickable: true,
+                // loop: true,
+                autoplay: 10000,
+                grabCursor: true,
+                pagination: '.swiper-pagination',
+                // spaceBetween: 10,
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+                touchEventsTarget: 'container',
+                breakpoints: {
+                    992: {
+                        slidesPerView: 1
+                    },
+                    768: {
+                        slidesPerView: 1
+
+                    },
+                    481: {
+                        slidesPerView: 1
+                    },
+                    320: {
+                        slidesPerView: 1
+                    }
+                }
+            })
+        }, 100);
         // SWIPER END
     }
     $scope.swiperInitialise = function (type) {

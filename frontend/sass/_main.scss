@@ -131,10 +131,15 @@ header {
 // LANDING PAGE
 .landingpage{
     min-height: 200vh;
+    .landinpage-section{
+        margin-top: -40px;
+        margin-bottom: 40px;
+    }
    .greentab-holder{    
     padding: 10px;
-    background-color: #000072;
-    color: #fff;
+    // background-color: #000072;
+    color: #000;
+    box-shadow: 5px 5px 12px #888888;
     }
     .landingpage-products,.landingpage-products-display{
         margin-top: 20px;
@@ -155,6 +160,12 @@ header {
     }
     .company-works-head{
         margin-bottom: 40px;
+    }
+
+    .company-works-holder{
+        padding: 20px;
+        box-shadow: 0px 0px 10px #e1e1e1;
+        min-height: 220px;
     }
     .company-data{
         padding: 50px 0px;
@@ -204,6 +215,29 @@ header {
 
 }
 // TESTOMONIAL END
+
+.greentab-location{
+    .btn-default:focus,
+    .btn-default.focus,
+    .btn-default:active:hover,
+    .btn-default:active.focus,
+    .btn-default.active:hover,.btn-default.active:focus,.btn-default.active.focus,
+    .open > .btn-default.dropdown-toggle:hover,.open > .btn-default.dropdown-toggle:focus,
+    .open > .btn-default.dropdown-toggle.focus,.open > .btn-default.dropdown-toggle,
+    .btn-default:active, .btn-default.active
+    {
+        background-color: #fff !important;
+        border-color:#fff !important;
+    }
+
+    .btn-default:hover,.btn-default{
+        background-color:#fff !important;
+        border-color: #fff !important; 
+    }
+    .bootstrap-select .dropdown-toggle:focus{
+        outline: solid #fff !important;
+    }
+}
 
 .list-none{
     list-style: none;

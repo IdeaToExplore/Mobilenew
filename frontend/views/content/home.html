@@ -1,4 +1,27 @@
 <div class="landingpage">
+    <section class="landinpage-section">
+        <!--IMAGES SLIDER  -->
+        <div class="landingpage-imageswiper">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" ng-repeat="img in landingswiper track by $index">
+                        <div class="landinpage-image-holder">
+                            <img src="{{img.src}}" alt="" class="img-responsive">
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+
+                <!-- <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div> -->
+            </div>
+        </div>
+
+        <!--IMAGES SLIDER END  -->
+    </section>
+
     <div class="container">
         <!--LOCATION TAB  -->
         <div class="row">
@@ -14,14 +37,8 @@
 
                     <div class="col-md-3 col-sm-3 col-xs-12">
                         <div class="greentab-location">
-                            <!-- <p class="m-clear">
-                                Location
-                            </p> -->
-                            <!-- <i class="material-icons" style="font-size:48px;color:red">place</i> -->
-                            <select class="selectpicker" data-live-search="true" title="location">
-                            <option>Mustard</option>
-                            <option>Ketchup</option>
-                            <option>Relish</option>
+                            <select class="selectpicker" data-live-search="true" data-dropupAuto="false">
+                            <option ng-repeat="s in state track by $index">{{s.name}}</option>
                             </select>
                         </div>
                     </div>
@@ -99,7 +116,7 @@
 
                         <!--CONTENT  -->
                         <div class="company-works-content">
-                            <p>{{work.content}}</p>
+                            <p class="text-muted">{{work.content}}</p>
                         </div>
                         <!--END CONTENT  -->
                     </div>
