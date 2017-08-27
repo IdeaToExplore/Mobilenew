@@ -1,0 +1,194 @@
+<div class="landingpage">
+    <div class="container">
+        <!--LOCATION TAB  -->
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="greentab-holder row">
+                    <div class="col-md-9 col-sm-3 col-xs-12">
+                        <div class="greentab-content">
+                            <p class="m-clear text-capitalize">
+                                what do you want to sell ?
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <div class="greentab-location">
+                            <!-- <p class="m-clear">
+                                Location
+                            </p> -->
+                            <select class="selectpicker" data-live-search="true" title="location">
+                            <option>Mustard</option>
+                            <option>Ketchup</option>
+                            <option>Relish</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+        <!--LOCATION TAB END  -->
+        <!--PRODUCT CONTENT  -->
+        <div class="row">
+            <!--CATEGORY LIST  -->
+            <div class="col-md-5 col-sm-6 col-xs-12">
+                <div class="landingpage-products">
+                    <div class="col-md-4 text-center" ng-repeat="product in Productlist track by $index">
+                        <div class="product-holder">
+                            <!-- <i class="fa fa-5x fa-mobile" ></i> -->
+                            <div class="product-imageholder">
+                                <img src="{{product.img}}" alt="" class="img-responsive">
+                            </div>
+                            <p class="text-capitalize"> {{product.name}}</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--CATEGORY LIST END  -->
+
+            <!--AD PLUS SELECTED CATEGORY SECTION  -->
+            <div class="col-md-7 col-sm-6 col-xs-12">
+                <div class="ad-plus-swiper">
+                    <div class="swiper-container landingpage-products-display">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" style="height: 270px;" ng-repeat="s in data track by $index">
+                                <img src="img/ad.jpg" alt="" class="img-responsive">
+                            </div>
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination"></div>
+
+                        <!-- <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div> -->
+                    </div>
+                </div>
+            </div>
+            <!--END  AD PLUS SELECTED CATEGORY SECTION  -->
+        </div>
+        <!--PRODUCT CONTENT END  -->
+    </div>
+    <!--HOW TE COMPANY WORKS  -->
+    <section class="company-works">
+        <div class="container">
+            <div class="row">
+                <!--COMPANY WORKS MAIN HEAD  -->
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="company-works-head">
+                        <h3 class="text-uppercase text-center">HOW the company works</h3>
+                    </div>
+                </div>
+                <!--END COMPANY WORKS MAIN HEAD  -->
+                <div class="col-md-4" ng-repeat="work in Workscontent track by $index">
+                    <div class="company-works-holder">
+                        <!--IMAGE  -->
+                        <div class="company-works-imageholder text-center">
+                            <i class="{{work.img}}" aria-hidden="true"></i>
+                            <!-- <img src="" alt="image" class="img-responsive"> -->
+                        </div>
+                        <!--END IMAGE  -->
+                        <!--HEADING  -->
+                        <div class="company-works-header">
+                            <h4 class="text-capitalize text-center">{{work.head}}</h4>
+                        </div>
+                        <!--END HEADING  -->
+
+                        <!--CONTENT  -->
+                        <div class="company-works-content">
+                            <p>{{work.content}}</p>
+                        </div>
+                        <!--END CONTENT  -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--END HOW THE COMPANY WORKS  -->
+
+    <!--COMPANY DATA  -->
+    <section class="company-data">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12" ng-repeat="data in CompanyData track by $index">
+                    <div class="company-data-holder text-center" ng-class="{'border-rl':$index===1}">
+                        <div class="company-data-number">
+                            <span>{{data.number}}</span> <span>{{data.words}}</span>
+                        </div>
+                        <div class="company-data-head">
+                            <p>{{data.head}}</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--COMPANY DATA END  -->
+
+    <!--COMPANY EXCHANGE PARTNERS  -->
+    <section class="company-exchange-partners">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="company-exhange-head">
+                        <h3 class="text-uppercase text-center">
+                            OUR exchange partners
+                        </h3>
+                    </div>
+                    <div class="company-exchange-swiper">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide" ng-repeat="s in data track by $index ">
+                                    <img src="https://s3.cashify.in/exchangePartners/oneplus.png" alt=" " class="img-responsive ">
+                                </div>
+                            </div>
+                            <!-- Add Pagination -->
+                            <div class="swiper-pagination "></div>
+
+                            <div class="swiper-button-prev "></div>
+                            <div class="swiper-button-next "></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!--COMPANY EXCHANGE PARTNERS END  -->
+
+    <!--TESTOMONIAL  -->
+    <section class="testomonial">
+        <div class="container-fluid bg-colour-testomonial">
+            <div class="testomonial-swiper-holder">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" ng-repeat="feeedback in feedBack track by $index">
+                            <div class="">
+                                <div class="testomonial-image-holder">
+                                    <div class="testomonial-image">
+                                        <img src="{{feeedback.img}}" alt="image" class="img-responsive">
+                                    </div>
+                                    <p>{{feeedback.name}}</p>
+                                </div>
+                                <div class="testomonial-content-holder">
+                                    <p class="m-clear">{{feeedback.content}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination "></div>
+                    </div>
+                    <div class="swiper-button-prev "></div>
+                    <div class="swiper-button-next "></div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--TESTOMONIAL END  -->
+</div>
