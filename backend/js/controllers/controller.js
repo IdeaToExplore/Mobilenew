@@ -8,11 +8,11 @@ myApp.controller('DashboardCtrl', function ($scope, TemplateService, NavigationS
     })
 
     .controller('AccessController', function ($scope, TemplateService, NavigationService, $timeout, $state) {
-        if ($.jStorage.get("accessToken")) {
+        // if ($.jStorage.get("accessToken")) {
 
-        } else {
-            $state.go("login");
-        }
+        // } else {
+        //     $state.go("login");
+        // }
     })
 
     .controller('JagzCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state, $interval) {
@@ -77,10 +77,9 @@ myApp.controller('DashboardCtrl', function ($scope, TemplateService, NavigationS
 
     })
 
-    .controller('MultipleSelectCtrl', function ($scope, $window, TemplateService, NavigationService, $timeout, $state, $stateParams, $filter, toastr) {
+    .controller('MultipleSelectCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, $filter, toastr) {
         var i = 0;
         $scope.getValues = function (filter, insertFirst) {
-
             var dataSend = {
                 keyword: $scope.search.modelData,
                 filter: filter,
@@ -89,7 +88,7 @@ myApp.controller('DashboardCtrl', function ($scope, TemplateService, NavigationS
             if (dataSend.keyword === null || dataSend.keyword === undefined) {
                 dataSend.keyword = "";
             }
-            NavigationService[$scope.api](dataSend, ++i, function (data) {
+            NavigationService[$scope.api]($scope.url, dataSend, ++i, function (data) {
                 if (data.value) {
                     $scope.list = data.data.results;
                     if ($scope.search.modelData) {
@@ -133,45 +132,57 @@ myApp.controller('DashboardCtrl', function ($scope, TemplateService, NavigationS
             });
         };
 
+        $scope.$watch('model', function (newVal, oldVal) {
+            if (newVal && oldVal === undefined) {
+                $scope.getValues({
+                    _id: $scope.model
+                }, true);
+            }
+        });
+
+
+        $scope.$watch('filter', function (newVal, oldVal) {
+            var filter = {};
+            if ($scope.filter) {
+                filter = JSON.parse($scope.filter);
+            }
+            var dataSend = {
+                keyword: $scope.search.modelData,
+                filter: filter,
+                page: 1
+            };
+
+            NavigationService[$scope.api]($scope.url, dataSend, ++i, function (data) {
+                if (data.value) {
+                    $scope.list = data.data.results;
+                    $scope.showCreate = false;
+
+                }
+            });
+        });
+
 
         $scope.search = {
             modelData: ""
         };
+        if ($scope.model) {
+            $scope.getValues({
+                _id: $scope.model
+            }, true);
+        } else {
+            $scope.getValues();
+        }
+
+
+
+
 
         $scope.listview = false;
         $scope.showCreate = false;
         $scope.typeselect = "";
         $scope.showList = function () {
-            var areFiltersThere = true;
-            var filter = {};
-            if ($scope.filter) {
-                filter = JSON.parse($scope.filter);
-            }
-            var filterName = {};
-            if ($scope.filterName) {
-                filterName = JSON.parse($scope.filterName);
-            }
-
-            function getName(word) {
-                var name = filterName[word];
-                if (_.isEmpty(name)) {
-                    name = word;
-                }
-                return name;
-            }
-
-            if (filter) {
-                _.each(filter, function (n, key) {
-                    if (_.isEmpty(n)) {
-                        areFiltersThere = false;
-                        toastr.warning("Please enter " + getName(key));
-                    }
-                });
-            }
-            if (areFiltersThere) {
-                $scope.listview = true;
-                $scope.searchNew(true);
-            }
+            $scope.listview = true;
+            $scope.searchNew(true);
         };
         $scope.closeList = function () {
             $scope.listview = false;
@@ -199,6 +210,7 @@ myApp.controller('DashboardCtrl', function ($scope, TemplateService, NavigationS
             if ($scope.filter) {
                 data = _.assign(data, JSON.parse($scope.filter));
             }
+            console.log(data);
             NavigationService[$scope.create](data, function (data) {
                 if (data.value) {
                     toastr.success($scope.name + " Created Successfully", "Creation Success");
@@ -216,13 +228,6 @@ myApp.controller('DashboardCtrl', function ($scope, TemplateService, NavigationS
             $scope.model = val;
             $scope.listview = false;
         };
-        $scope.$watch('model', function (newVal, oldVal) {
-            if ($scope.model) {
-                if (_.isObject($scope.model)) {
-                    $scope.sendData($scope.model._id, $scope.model.name);
-                }
-            }
-        });
     })
 
     .controller('PageJsonCtrl', function ($scope, TemplateService, NavigationService, JsonService, $timeout, $state, $stateParams, $uibModal) {
@@ -236,7 +241,7 @@ myApp.controller('DashboardCtrl', function ($scope, TemplateService, NavigationS
         globalfunction.confDel = function (callback) {
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
-                templateUrl: 'views/modal/conf-delete.html',
+                templateUrl: '/views/modal/conf-delete.html',
                 size: 'sm',
                 scope: $scope
             });
@@ -249,7 +254,7 @@ myApp.controller('DashboardCtrl', function ($scope, TemplateService, NavigationS
         globalfunction.openModal = function (callback) {
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
-                templateUrl: 'views/modal/modal.html',
+                templateUrl: '/views/modal/modal.html',
                 size: 'lg',
                 scope: $scope
             });
@@ -499,7 +504,7 @@ myApp.controller('DashboardCtrl', function ($scope, TemplateService, NavigationS
             $scope.data = data;
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
-                templateUrl: 'views/modal/modal.html',
+                templateUrl: '/views/modal/modal.html',
                 size: 'lg',
                 scope: $scope
             });

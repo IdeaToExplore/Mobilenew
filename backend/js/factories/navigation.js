@@ -3,13 +3,26 @@ var imgurl = adminurl + "upload/";
 var imgpath = imgurl + "readFile";
 var uploadurl = imgurl;
 
-
-
 myApp.factory('NavigationService', function ($http) {
     var navigation = [{
-        name: "Users",
+        name: "Brand",
         classis: "active",
-        sref: "#!/page/viewUser//",
+        sref: "#!/page/viewBrand//",
+        icon: "phone"
+    },{
+        name: "Subtype",
+        classis: "active",
+        sref: "#!/page/viewSubtype//",
+        icon: "phone"
+    },{
+        name: "Subcategory",
+        classis: "active",
+        sref: "#!/page/viewSubcategory//",
+        icon: "phone"
+    },{
+        name: "Question",
+        classis: "active",
+        sref: "#!/page/viewQuestion//",
         icon: "phone"
     }];
 

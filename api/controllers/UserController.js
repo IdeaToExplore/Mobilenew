@@ -9,8 +9,6 @@ var controller = {
     loginGoogle: function (req, res) {
         if (req.query.returnUrl) {
             req.session.returnUrl = req.query.returnUrl;
-        } else {
-
         }
 
         passport.authenticate('google', {
@@ -52,7 +50,7 @@ var controller = {
         if (q >= 0) {
             _.times(20, function (n) {
                 var name = moment().subtract(5 + n, "days").format("ddd-Do-MMM-YYYY");
-                exec("cd backup && rm -rf " + name + "*", function (err, stdout, stderr) { });
+                exec("cd backup && rm -rf " + name + "*", function (err, stdout, stderr) {});
             });
             var jagz = _.map(mongoose.models, function (Model, key) {
                 var name = Model.collection.collectionName;
@@ -66,9 +64,9 @@ var controller = {
                 "key": "fs.chunks",
                 "name": "fs.chunks"
             }, {
-                    "key": "fs.files",
-                    "name": "fs.files"
-                });
+                "key": "fs.files",
+                "name": "fs.files"
+            });
             var isBackup = fs.existsSync("./backup");
             if (!isBackup) {
                 fs.mkdirSync("./backup");
@@ -88,13 +86,6 @@ var controller = {
         } else {
             res.callback("Access Denied for Database Backup");
         }
-    },
-    getAllMedia: function (req, res) {
-        Media.getAllMedia(req.body, res.callback);
-    },
-    sendmail: function (req, res) {
-        Config.sendEmail("chintan@wohlig.com", "jagruti@wohlig.com", "first email from endgrid", "", "<html><body>dome content</body></html>");
     }
-
 };
 module.exports = _.assign(module.exports, controller);

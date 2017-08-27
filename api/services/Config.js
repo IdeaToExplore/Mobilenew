@@ -6,7 +6,7 @@
  */
 
 
-var MaxImageSize = 1600;
+var MaxImageSize = 3200;
 
 
 
@@ -129,19 +129,19 @@ var models = {
                 if (err) {
                     callback(err, null);
                 } else {
-                    if (image.bitmap.width > MaxImageSize || image.bitmap.height > MaxImageSize) {
-                        image.scaleToFit(MaxImageSize, MaxImageSize).getBuffer(Jimp.AUTO, function (err, imageBuf) {
-                            var bufferStream = new stream.PassThrough();
-                            bufferStream.end(imageBuf);
-                            bufferStream.pipe(writestream);
-                        });
-                    } else {
+                    // if (image.bitmap.width > MaxImageSize || image.bitmap.height > MaxImageSize) {
+                    //     image.scaleToFit(MaxImageSize, MaxImageSize).getBuffer(Jimp.AUTO, function (err, imageBuf) {
+                    //         var bufferStream = new stream.PassThrough();
+                    //         bufferStream.end(imageBuf);
+                    //         bufferStream.pipe(writestream);
+                    //     });
+                    // } else {
                         image.getBuffer(Jimp.AUTO, function (err, imageBuf) {
                             var bufferStream = new stream.PassThrough();
                             bufferStream.end(imageBuf);
                             bufferStream.pipe(writestream);
                         });
-                    }
+                    // }
 
                 }
 
@@ -151,25 +151,6 @@ var models = {
         }
 
 
-    },
-    readAttachment: function (filename, callback) {
-        console.log("filename", filename);
-        var readstream = gfs.createReadStream({
-            filename: filename
-        });
-        readstream.on('error', function (err) {
-
-            callback(err, false);
-        });
-        var buf;
-        var bufs = [];
-        readstream.on('data', function (d) {
-            bufs.push(d);
-        });
-        readstream.on('end', function () {
-            buf = Buffer.concat(bufs);
-            callback(null, buf);
-        });
     },
     readUploaded: function (filename, width, height, style, res) {
         res.set({
@@ -378,63 +359,25 @@ var models = {
             callback(err);
         });
     },
-    sendEmail: function (fromEmail, toEmail, subject, html, attachments, callback) {
-
-        Password.findOneByName("sendgrid", function (err, data) {
-            if (err) {
-                callback(err);
-            } else {
-                var helper = require('sendgrid').mail;
-                var sg = require('sendgrid')(data.key);
-                var mail = new helper.Mail();
-
-                var email = new helper.Email(fromEmail.email, fromEmailName.name);
-                mail.setFrom(email);
-                mail.setSubject(subject);
-                var personalization = new helper.Personalization();
-                _.each(toEmail, function (n) {
-                    var email = new helper.Email(n.email, n.name);
-                    personalization.addTo(email);
-                });
-
-                mail.addPersonalization(personalization);
-
-                var content = new helper.Content('text/html', html);
-                mail.addContent(content);
-
-                async.each(attachments, function (filename, callback) {
-                    var attachment = new helper.Attachment();
-                    Config.readAttachment(filename, function (err, data) {
-                        if (err) {
-                            callback(err);
-                        } else {
-                            var base64File = new Buffer(data).toString('base64');
-                            attachment.setContent(base64File);
-                            attachment.setFilename(filename);
-                            attachment.setDisposition('attachment');
-                            mail.addAttachment(attachment);
-                            callback();
-                        }
-                    });
-                }, function (err) {
-                    if (err) {
-                        callback(err);
-                    } else {
-                        var request = sg.emptyRequest({
-                            method: 'POST',
-                            path: '/v3/mail/send',
-                            body: mail.toJSON(),
-                        });
-                        sg.API(request, callback);
-                    }
-
-                });
-            }
+    sendEmail: function (fromEmail, toEmail, subject, filename, data) {
+        var helper = require('sendgrid').mail;
+        var from_email = new helper.Email(fromEmail);
+        var to_email = new helper.Email(toEmail);
+        sails.hooks.views.render("email/" + filename, data, function (err, html) {
+            var content = new helper.Content('text/html', html);
+            var mail = new helper.Mail(from_email, subject, to_email, content);
+            var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
+            var request = sg.emptyRequest({
+                method: 'POST',
+                path: '/v3/mail/send',
+                body: mail.toJSON(),
+            });
+            sg.API(request, function (error, response) {
+                console.log(response.statusCode);
+                console.log(response.body);
+                console.log(response.headers);
+            });
         });
-
-
-
-
 
     }
 };
