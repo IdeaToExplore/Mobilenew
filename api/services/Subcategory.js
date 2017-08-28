@@ -45,6 +45,23 @@ var model = {
                     });
     },
 
+    getOne :function(data,callback){
+        var deepSearch="subtype.brand question"
+       Subcategory.findOne({
+           _id:data._id
+       }).lean().deepPopulate(deepSearch).exec(function (err, found) {
+                        if(err){
+                            callback(err,null);
+                        }else{
+                            if(_.isEmpty(found)){
+                                callback(null,[]);
+                            }else{
+                                callback(null,found);
+                            }
+                        }
+                    }); 
+    }
+
 };
 
     
