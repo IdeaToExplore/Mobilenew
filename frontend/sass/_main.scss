@@ -124,6 +124,17 @@ header {
     margin: 0px;
 }
 
+.not-visible {
+  visibility: hidden;
+}
+.animateOnce {
+    animation: splash 5s normal forwards ease-in-out;
+}
+
+.count{
+    animation-iteration-count: 3
+}
+
 .border-rl{
     border-left: 2px solid #fff;
     border-right: 2px solid #fff;
@@ -184,6 +195,23 @@ header {
     .company-exchange-partners{
         padding: 50px 0px;
         padding-top: 30px;
+    }
+    .category-list-phone,.specific-phone-holder{
+        margin-top: 25px;
+        padding: 15px;
+        box-shadow: 5px 5px 5px #e1e1e1;
+    }
+    .category-image-holder,.specific-phone-imageholder{
+        width: 70px;
+        height: 70px;
+        margin: 0 auto;
+    }
+    .category-mobile-content,.specific-phone-contentholder{
+        text-align: center;
+    }
+    .category-scroll{
+        overflow-y: auto;
+        max-height: 320px;
     }
 }
 

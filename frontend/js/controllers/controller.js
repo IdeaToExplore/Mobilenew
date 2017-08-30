@@ -1,26 +1,32 @@
-myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
     $scope.template = TemplateService.getHTML("content/home.html");
     TemplateService.title = "Home"; //This is the Title of the Website
     $scope.navigation = NavigationService.getNavigation();
     $scope.data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     $scope.Productlist = [{
         img: "https://s3.cashify.in/cashify/productLine/img/xxhdpi/587753dd18df2.png",
-        name: "mobile Phone"
+        name: "mobile Phone",
+        id: "1"
     }, {
         img: "https://s3.cashify.in/cashify/productLine/img/xxhdpi/587753dd18df2.png",
-        name: "mobile Phone"
+        name: "mobile Phone",
+        id: "2"
     }, {
         img: "https://s3.cashify.in/cashify/productLine/img/xxhdpi/587753dd18df2.png",
-        name: "mobile Phone"
+        name: "mobile Phone",
+        id: "3"
     }, {
         img: "https://s3.cashify.in/cashify/productLine/img/xxhdpi/587753dd18df2.png",
-        name: "mobile Phone"
+        name: "mobile Phone",
+        id: "4"
     }, {
         img: "https://s3.cashify.in/cashify/productLine/img/xxhdpi/587753dd18df2.png",
-        name: "mobile Phone"
+        name: "mobile Phone",
+        id: "5"
     }, {
         img: "https://s3.cashify.in/cashify/productLine/img/xxhdpi/587753dd18df2.png",
-        name: "mobile Phone"
+        name: "mobile Phone",
+        id: "6"
     }]
 
     // IMAGE JSON
@@ -34,6 +40,34 @@ myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationServic
         src: "img/final4.jpg"
     }]
     // IMAGE JSON END
+    var modal;
+    $scope.login = function () {
+        console.log("modal")
+        modal = $uibModal.open({
+            animation: true,
+            scope: $scope,
+            // backdrop: 'static',
+            keyboard: false,
+            templateUrl: 'views/modal/login.html',
+            size: 'lg',
+            windowClass: 'fadeInLeft'
+        })
+    }
+
+
+
+    // ANIMATION
+
+    $scope.animateElementIn = function ($el) {
+        // $el.removeClass('hidden');
+        $el.addClass('animated fadeInLeft'); // this example leverages animate.css classes
+    };
+
+    $scope.animateElementOut = function ($el) {
+        // $el.addClass('animateOnce count');
+        $el.removeClass('animated fadeInLeft'); // this example leverages animate.css classes
+    };
+    // ANIMATION END
 
     // HOW THE COMPANY WORKS JSON
     $scope.Workscontent = [{
@@ -51,6 +85,9 @@ myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationServic
     }]
     // HOW THE COMPANY WORKS JSON END
 
+
+
+    // $.modalAnimate();
 
     // COMPANY DATA JSON
     $scope.CompanyData = [{

@@ -26,9 +26,13 @@ module.exports = [
   "bower_components/angular-toastr/dist/angular-toastr.js",
   "bower_components/angular-toastr/dist/angular-toastr.tpls.js",
   "bower_components/angular-promise-buttons/dist/angular-promise-buttons.js",
+  "bower_components/angular-scroll-animate/dist/angular-scroll-animate.js",
 
   //App.js
   'frontend/js/app.js',
+
+  // MODAL
+  'frontend/js/modalanimate.js',
 
   // Languages
   'frontend/js/languages/language.js',

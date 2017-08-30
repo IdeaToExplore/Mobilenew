@@ -12,6 +12,7 @@ var myApp = angular.module('myApp', [
     // 'ui.swiper',
     'angularPromiseButtons',
     'toastr',
+    'angular-scroll-animate',
 ]);
 
 // Define all the routes below

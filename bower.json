@@ -66,6 +66,7 @@
     "cleave.js": "^0.7.10",
     "angular-promise-buttons": "^0.1.21",
     "swiper": "^3.4.2",
-    "bootstrap-select": "^1.12.4"
+    "bootstrap-select": "^1.12.4",
+    "angular-scroll-animate": "^0.9.9"
   }
 }

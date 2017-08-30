@@ -26,26 +26,30 @@
         <!--LOCATION TAB  -->
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="greentab-holder row">
-                    <div class="col-md-9 col-sm-3 col-xs-12">
-                        <div class="greentab-content">
-                            <p class="m-clear text-capitalize">
-                                Want to sell your Mobile or get it Repaired ?
-                            </p>
+                <section class="company-works slideInUp">
+                    <div class="greentab-holder row ">
+                        <div class="col-md-9 col-sm-3 col-xs-12">
+                            <div class="greentab-content">
+                                <p class="m-clear text-capitalize" ng-hide="showme">
+                                    Want to sell your Mobile or get it Repaired ?
+                                </p>
+                                <p ng-click="showme=false" ng-show="showme">
+                                    Back
+                                </p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-3 col-sm-3 col-xs-12">
-                        <div class="greentab-location">
-                            <select class="selectpicker" data-live-search="true" data-dropupAuto="false">
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <div class="greentab-location">
+                                <select class="selectpicker" data-live-search="true" data-dropupAuto="false">
                             <option ng-repeat="s in state track by $index">{{s.name}}</option>
                             </select>
+                            </div>
                         </div>
+
+
+
                     </div>
-
-
-
-                </div>
             </div>
         </div>
         <!--LOCATION TAB END  -->
@@ -53,7 +57,7 @@
         <div class="row">
             <!--CATEGORY LIST  -->
             <div class="col-md-5 col-sm-6 col-xs-12">
-                <div class="landingpage-products">
+                <div class="landingpage-products" ng-click="showme=true">
                     <div class="col-md-4 text-center" ng-repeat="product in Productlist track by $index">
                         <div class="product-holder">
                             <!-- <i class="fa fa-5x fa-mobile" ></i> -->
@@ -70,27 +74,61 @@
 
             <!--AD PLUS SELECTED CATEGORY SECTION  -->
             <div class="col-md-7 col-sm-6 col-xs-12">
-                <div class="ad-plus-swiper">
-                    <div class="swiper-container landingpage-products-display">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide" style="height: 270px;" ng-repeat="s in data track by $index">
-                                <img src="img/ad.jpg" alt="" class="img-responsive">
+                <div class="category-scroll">
+                    <div class="ad-plus-swiper" ng-hide="showme || showphone">
+                        <div class="swiper-container landingpage-products-display">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide" style="height: 270px;" ng-repeat="s in data track by $index">
+                                    <img src="img/ad.jpg" alt="" class="img-responsive">
+                                </div>
+                            </div>
+                            <!-- Add Pagination -->
+                            <div class="swiper-pagination"></div>
+
+                            <!-- <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div> -->
+                        </div>
+                    </div>
+
+                    <!--CATEGORY LIST FOR PHONES  -->
+                    <div class="category-phone-nameholder" ng-repeat="cat in data  | limitTo:10 track by $index" ng-show="showme">
+                        <div class="col-md-3">
+                            <div class="category-list-phone" ng-click="phone=true">
+                                <div class="category-image-holder">
+                                    <img src="img/deepika.jpg" alt="" class="img-responsive">
+                                </div>
+                                <div class="category-mobile-content">
+                                    <p>mobile</p>
+                                </div>
                             </div>
                         </div>
-                        <!-- Add Pagination -->
-                        <div class="swiper-pagination"></div>
-
-                        <!-- <div class="swiper-button-prev"></div>
-                        <div class="swiper-button-next"></div> -->
                     </div>
+                    <!--CATEGORY LIST FOR PHONES END  -->
+
+                    <!--CATEGORY PHONE LIST  -->
+                    <!-- <div class="category-phonelist-holder" ng-repeat="phone in data track by $index" ng-show="phone" ng-hide="showme">
+                        <div class="col-md-3">
+                            <div class="specific-phone-holder">
+                                <div class="specific-phone-imageholder">
+                                    <img src="https://s3.cashify.in/cashify/productLine/img/xxhdpi/587753dd18df2.png" , alt="" class="img-responsive">
+                                </div>
+                                <div class="specific-phone-contentholder">
+                                    <p>HTC</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!--CATEGORY PHONE LIST END  -->
                 </div>
             </div>
             <!--END  AD PLUS SELECTED CATEGORY SECTION  -->
         </div>
         <!--PRODUCT CONTENT END  -->
     </div>
+
+
     <!--HOW TE COMPANY WORKS  -->
-    <section class="company-works">
+    <section class="company-works " when-visible=" animateElementIn " when-not-visible="animateElementOut">
         <div class="container">
             <div class="row">
                 <!--COMPANY WORKS MAIN HEAD  -->

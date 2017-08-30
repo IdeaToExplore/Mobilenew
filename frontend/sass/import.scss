@@ -11,10 +11,13 @@
  @import "../../bower_components/angular-toastr/dist/angular-toastr";
  @import "../../bower_components/swiper/dist/css/swiper.min.css";
  @import "../../bower_components/bootstrap-select/dist/css/bootstrap-select.min.css";
+ @import "../../bower_components/animate.css/animate.min.css";
+//  @import "../../bower_components/angular-scroll-animate/css/animations.css";
  /****** Please Import Libraries Above This!!!!!! ******/
 
  @import "main";
  @import "other/fancybox-override";
+//  @import "other/modalanimation.scss";
  @import "responsive/lg";
  @import "responsive/md";
  @import "responsive/sm";
