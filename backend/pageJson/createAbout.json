@@ -1,0 +1,94 @@
+{
+    "title": "Create About",
+    "name": "About",
+    "jsonPage": "viewAbout",
+    "desciption": "",
+    "pageType": "create",
+    "urlFields": ["About"],
+    "fields": [{ 
+        "name": "Name",
+        "type": "text",
+        "tableRef": "name",
+        "placeholder": "Enter name",
+        "id": "name",
+        "validation": ["required", "trim", "unique"],
+        "url": ""
+    },{
+        "name": "landline",
+        "type": "text",
+        "tableRef": "landline",
+        "placeholder": "Enter landline",
+        "id": "landline",
+        "validation": ["required", "trim", "unique"],
+        "url": ""
+        
+    },
+    {
+        "name": "mobile",
+        "type": "text",
+        "tableRef": "mobile",
+        "placeholder": "Enter mobile",
+        "id": "mobile",
+        "validation": ["required", "trim", "unique"],
+        "url": ""
+        
+    },
+    {
+        "name": "addressLine1",
+        "type": "text",
+        "tableRef": "addressLine1",
+        "placeholder": "Enter addressLine1",
+        "id": "addressLine1",
+        "validation": ["required", "trim", "unique"],
+        "url": ""  
+    },
+    {
+        "name": "addressLine2",
+        "type": "text",
+        "tableRef": "addressLine2",
+        "placeholder": "Enter addressLine2",
+        "id": "addressLine2",
+        "validation": ["required", "trim", "unique"],
+        "url": ""  
+    },
+    {
+        "name": "description",
+        "type": "text",
+        "tableRef": "description",
+        "placeholder": "Enter description",
+        "id": "description",
+        "validation": ["required", "trim", "unique"],
+        "url": ""  
+    },
+    {
+        "name": "email",
+        "type": "text",
+        "tableRef": "email",
+        "placeholder": "Enter email",
+        "id": "email",
+        "validation": ["required", "trim", "unique"],
+        "url": ""  
+    }],
+    "action": [{
+        "name": "submit",
+        "action": "submitAbout",
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewAbout"
+            }
+        }
+    }, {
+        "name": "cancel",
+        "sideMenuRedirect": true,
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewAbout"
+            }
+        }
+    }],
+    "apiCall": {
+        "url": "About/save"
+    }
+}
