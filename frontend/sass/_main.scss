@@ -26,6 +26,10 @@ img {
     transition: all 300ms ease;
 }
 
+.inline-block{
+    display: inline-block;
+}
+
 img.doneLoading {
     opacity: 1;
 }
@@ -90,6 +94,46 @@ footer {
     min-height: 300px;
 }
 
+.get-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @include transform(translate(-50%,
+  -50%));
+}
+
+.absolute {
+  position: absolute;
+}
+
+.relate {
+  position: relative;
+}
+.check{
+    &:before{
+    content: '';
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 5px inherit;
+    width: 5px;
+    height: 5px;
+    border-right: 15px solid green;
+    border-left: 15px solid transparent;
+    border-top: 15px solid green;
+    border-bottom: 15px solid transparent;
+        
+    }
+}
+
+.fa-check-circle{
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    z-index: 2;
+    color: #fff;
+    font-size: 12px;
+}
 //FLEX SLIDER FIXES
 .flex-direction-nav {
     a {
@@ -215,6 +259,7 @@ header {
     }
 }
 
+
 // TESTOMONIAL
 .testomonial{
     .testomonial-image-holder{
@@ -272,3 +317,70 @@ header {
 }
 
 // LANDING PAGE END
+
+// CATEGORY PAGE
+.category-page{
+    min-height: 100vh;
+    .category-question-holder{
+        height:450px;
+        border: 1px solid #000;
+        margin: 50px 0px;
+        padding: 30px 20px;
+    }
+    .selected-product-holder{
+        height: 350px;
+    }
+    .product-image-holder{
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+    }
+    .questions-holder{
+        height: 350px;
+        overflow-y: auto;
+    }
+    .question-card{
+        // border: 1px solid #000;
+        box-shadow: 0px 5px 5px #888888;
+        padding: 15px;
+        margin: 5px 0px;
+    }
+    .questioncard-image-holder{
+        width: 50px;
+        height: 50px;
+        margin: 0 auto;
+    }
+    .questioncard-content-holder{
+        padding-top: 10px;
+        text-align: center;
+    }
+    .accessories-card{
+        padding: 20px;
+        box-shadow: 0px 5px 5px #888888;
+    }
+    .accessoriescard-imageholder{
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+    }
+    .accessoriescard-content{
+        padding-top: 10px;
+    }
+}
+// CATEGORY PAGE END
+
+// ABOUT_US PAGE
+.about-page{
+    .about-us-photocard-holder{
+        margin: 10px 0px;
+    }
+    .about-us-photo-card{
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 100%;
+        padding-bottom: 10px;
+    }
+}
+// ABOUT_US PAGE END

@@ -54,7 +54,19 @@ myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationServic
         })
     }
 
+    $scope.$on('$viewContentLoaded', function (event) {
+        console.log("reloadviewcontetn")
+        $scope.animateElementIn = function ($el) {
+            // $el.removeClass('hidden');
+            $el.addClass('animated fadeInLeft'); // this example leverages animate.css classes
+        };
 
+        $scope.animateElementOut = function ($el) {
+            $el.addClass('animateOnce count');
+            $el.removeClass('animated fadeInLeft'); // this example leverages animate.css classes
+        };
+
+    });
 
     // ANIMATION
 
@@ -64,7 +76,7 @@ myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationServic
     };
 
     $scope.animateElementOut = function ($el) {
-        // $el.addClass('animateOnce count');
+        $el.addClass('animateOnce count');
         $el.removeClass('animated fadeInLeft'); // this example leverages animate.css classes
     };
     // ANIMATION END
@@ -138,6 +150,10 @@ myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationServic
         }).selectpicker("render");
     }, 100);
     // LOCATION END
+
+    window.onload = function () {
+        console.log("reload")
+    }
 
 
     $scope.initSwiper = function () {
@@ -320,12 +336,15 @@ myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationServic
         TemplateService.title = "Form"; //This is the Title of the Website
         $scope.navigation = NavigationService.getNavigation();
         $scope.formSubmitted = false;
-        // $scope.data = {
-        //     name: "Chintan",
-        //     "age": 20,
-        //     "email": "chinyan@wohlig.com",
-        //     "query": "query"
-        // };
+    })
+
+    .controller('AboutCtrl', function ($scope, TemplateService, NavigationService, $timeout, toastr, $http) {
+        $scope.template = TemplateService.getHTML("content/about-us.html");
+        TemplateService.title = "Form"; //This is the Title of the Website
+        $scope.navigation = NavigationService.getNavigation();
+        $scope.formSubmitted = false;
+
+        $scope.data = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     })
     .controller('GridCtrl', function ($scope, TemplateService, NavigationService, $timeout, toastr, $http) {
         $scope.template = TemplateService.getHTML("content/grid.html");

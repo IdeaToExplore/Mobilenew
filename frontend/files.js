@@ -55,4 +55,5 @@ module.exports = [
   'frontend/js/controllers/controller.js',
   'frontend/js/controllers/header-controller.js',
   'frontend/js/controllers/language-controller.js',
+  'frontend/js/controllers/category.js',
 ];

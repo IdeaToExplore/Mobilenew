@@ -32,10 +32,20 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
             templateUrl: tempateURL,
             controller: 'FormCtrl'
         })
+        .state('about-us', {
+            url: "/about-us",
+            templateUrl: tempateURL,
+            controller: 'AboutCtrl'
+        })
         .state('grid', {
             url: "/grid",
             templateUrl: tempateURL,
             controller: 'GridCtrl'
+        })
+        .state('category', {
+            url: "/category",
+            templateUrl: tempateURL,
+            controller: 'CategoryCtrl'
         });
     $urlRouterProvider.otherwise("/");
     $locationProvider.html5Mode(isproduction);

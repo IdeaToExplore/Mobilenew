@@ -1,0 +1,78 @@
+<div class="category-page">
+  <div class="container">
+    <!--CATEGORY QUESTION PAGE  -->
+    <div class="category-question-holder relate">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="selected-product-holder ">
+            <div class="product-image-holder get-center">
+              <img src="img/deepika.jpg" alt="" class="img-responsive">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7">
+          <!--PHYSICAL PROBLEMS  -->
+          <div class="questions-holder">
+            <div class="col-md-4" ng-repeat="s in data | limitTo:8 track by $index">
+              <div class="question-card relate">
+                <span class="check"><i class="fa fa-check-circle"></i></span>
+                <div class="questioncard-image-holder">
+                  <img src="https://s3.cashify.in/cashify/productLinePart/img/xxhdpi/5746e39ac23af.jpg" alt="" class="img-responsive">
+                </div>
+                <div class="questioncard-content-holder">
+                  <p>Lorem ipsum dolor sit.</p>
+                </div>
+              </div>
+            </div>
+
+
+            <!--ACCESSORIES  -->
+            <div class="" ng-if="agentloginView==1">
+              <div class="col-md-4" ng-repeat="a in data | limitTo:3 track by $index">
+                <div class="accessories-card relate">
+                  <span class="check"><i class="fa fa-check-circle"></i></span>
+                  <div class="accessoriescard-imageholder">
+                    <img src="https://s3.cashify.in/cashify/productLinePart/img/xxhdpi/5746a229460c0.png" alt="" class="img-responsive">
+                  </div>
+                  <div class="accessoriescard-content text-center">
+                    <p>Charger</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--ACCESSORIES END  -->
+
+            <!--CONDITION  -->
+            <div class="col-md-6" hidden>
+              <div class="product-condition-holder">
+                <div class="inline-block productcondition-imageholder">
+                  <div class="productcondition-image">
+                    <img src="https://s3.cashify.in/cashify/productLinePartVariation/img/xxhdpi/5746a4177f015.png" alt="" class="img-responsive">
+                  </div>
+                </div>
+                <div class="inline-block productcontion-content">
+                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum, veritatis.</p>
+                </div>
+              </div>
+            </div>
+            <!--CONDITION END  -->
+
+          </div>
+          <!--PHYSICAL PROBLEMS END  -->
+
+          <!-- <pre>{{view}}</pre> -->
+          <div class="text-right">
+            <button type="button" ng-click="viewslide(1)" class="btn btn-success">Success</button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+
+        </div>
+      </div>
+    </div>
+    <!--CATEGORY QUESTION PAGE END  -->
+  </div>
+
+</div>
