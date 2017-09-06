@@ -16,12 +16,19 @@ var schema = new Schema({
 
 schema.plugin(deepPopulate, {
     populate: {
-        "subtype.brand": {
-            select: '_id name logo'
+        "subtype":{
+            select:''
         },
         "question":{
-            select: '_id name option'
+            select:''
+
         }
+        // "subtype.brand": {
+        //     select: '_id name logo'
+        // },
+        // "question":{
+        //     select: '_id name option'
+        // }
     }
 });
 schema.plugin(uniqueValidator);
@@ -32,7 +39,7 @@ module.exports = mongoose.model('Subcategory', schema);
 var exports = _.cloneDeep(require("sails-wohlig-service")(schema));
 var model = {
     getAll : function(data,callback){
-        Subcategory.find().lean().deepPopulate("brand").exec(function (err, found) {
+        Subcategory.find().lean().deepPopulate("subtype question").exec(function (err, found) {
                         if(err){
                             callback(err,null);
                         }else{

@@ -26,6 +26,21 @@ var model = {
                     });
 
     },
+    getOne : function(data,callback){
+        Brand.findOne({
+            _id:data._id
+        }).lean().exec(function (err, found) {
+                        if(err){
+                            callback(err,null);
+                        }else{
+                            if(_.isEmpty(found)){
+                                callback(null,[]);
+                            }else{
+                                callback(null,found);
+                            }
+                        }
+                    });
+    },
 };
 
     

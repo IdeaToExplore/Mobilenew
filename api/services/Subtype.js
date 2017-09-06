@@ -23,7 +23,23 @@ module.exports = mongoose.model('Subtype', schema);
 var exports = _.cloneDeep(require("sails-wohlig-service")(schema,'brand','brand'));
 var model = {
     getAll : function(data,callback){
-        Subtype.find().lean().deepPopulate("brand").exec(function (err, found) {
+         Subtype.find().lean().deepPopulate("brand").exec(function (err, found) {
+                        if(err){
+                            callback(err,null);
+                        }else{
+                            if(_.isEmpty(found)){
+                                callback(null,[]);
+                            }else{
+                                callback(null,found);
+                            }
+                        }
+                    });
+
+    },
+    getOne : function(data,callback){
+        Subtype.findOne({
+            _id:data._id
+        }).lean().exec(function (err, found) {
                         if(err){
                             callback(err,null);
                         }else{

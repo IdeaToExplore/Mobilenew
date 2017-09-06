@@ -1,4 +1,4 @@
-myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal) {
+myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal,$http) {
     $scope.template = TemplateService.getHTML("content/home.html");
     TemplateService.title = "Home"; //This is the Title of the Website
     $scope.navigation = NavigationService.getNavigation();
@@ -116,30 +116,37 @@ myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationServic
         head: "Happy Users"
     }];
 
+    // $scope.state={};
     // COMPANY DATA JSON END
 
     // STATE JSON
-    // $scope.state = ["Mumbai", "Banglore", "Chennai", "Delhi", "Gujrat", "Kerla", "Orissa", "Kolkata"];
-
-    $scope.state = [{
-        name: "Mumbai"
-    }, {
-        name: "Banglore"
-    }, {
-        name: "Chennai"
-    }, {
-        name: "Delhi"
-    }, {
-        name: "Gujrat"
-    }, {
-        name: "Kerla"
-    }, {
-        name: "Mumbai"
-    }, {
-        name: "Orissa"
-    }, {
-        name: "Kolkata"
-    }];
+    $scope.viewState = function () {
+        $scope.url = "City/getAll";
+        NavigationService.apiCall($scope.url,function (data) {
+        console.log("data.value", data);
+        $scope.state = data.data;
+        });
+    }
+    $scope.viewState();
+    // $scope.state = [{
+    //     name: "Mumbai"
+    // }, {
+    //     name: "Banglore"
+    // }, {
+    //     name: "Chennai"
+    // }, {
+    //     name: "Delhi"
+    // }, {
+    //     name: "Gujrat"
+    // }, {
+    //     name: "Kerla"
+    // }, {
+    //     name: "Mumbai"
+    // }, {
+    //     name: "Orissa"
+    // }, {
+    //     name: "Kolkata"
+    // }];
     // STATE JSON END
 
     // LOCATION

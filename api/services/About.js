@@ -20,7 +20,7 @@ module.exports = mongoose.model('About', schema);
 var exports = _.cloneDeep(require("sails-wohlig-service")(schema));
 var model = {
     getAll : function(data,callback){
-        Subtype.find().lean().deepPopulate("about").exec(function (err, found) {
+        About.find().lean().exec(function (err, found) {
                         if(err){
                             callback(err,null);
                         }else{
@@ -31,6 +31,22 @@ var model = {
                             }
                         }
                     });
-    },  
+    }, 
+     
+    getOne : function(data,callback){
+        About.findOne({
+            _id:data._id
+        }).lean().exec(function (err, found) {
+                        if(err){
+                            callback(err,null);
+                        }else{
+                            if(_.isEmpty(found)){
+                                callback(null,[]);
+                            }else{
+                                callback(null,found);
+                            }
+                        }
+                    });
+    },
 };
 module.exports = _.assign(module.exports, exports, model);

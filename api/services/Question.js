@@ -16,10 +16,22 @@ module.exports = mongoose.model('Question', schema);
 
 var exports = _.cloneDeep(require("sails-wohlig-service")(schema));
 var model = {
-    get:function(data,callback){
 
-    },
-    
+   getOne : function(data,callback){
+        Question.findOne({
+            _id:data._id
+        }).lean().exec(function (err, found) {
+                        if(err){
+                            callback(err,null);
+                        }else{
+                            if(_.isEmpty(found)){
+                                callback(null,[]);
+                            }else{
+                                callback(null,found);
+                            }
+                        }
+                    });
+    },    
 
     
 
