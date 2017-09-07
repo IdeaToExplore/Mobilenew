@@ -11,6 +11,16 @@ var controller = {
             });
         }
     },
+    getOne: function (req, res) {
+        if (req.body) {
+            Brand.getOne(req.body, res.callback);
+        } else {
+            res.json({
+                value: false,
+                data: "Invalid Request"
+            });
+        }
+    },
     
     
 };
