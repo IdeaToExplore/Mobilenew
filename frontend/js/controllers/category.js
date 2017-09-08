@@ -17,21 +17,28 @@ myApp.controller('CategoryCtrl', function ($scope, TemplateService, NavigationSe
   $scope.viewslide = function (data) {
     var val=data;
     console.log("in switch")
-    console.log(val)
-    switch (val) {
-      case 0:
-        $scope.slideView = 0;
-        break;
-      case 1:
-        $agentloginView = 1;
-        console.log("i am in ")
-        console.log($agentloginView)
-        break;
-      case 2:
-        $scope.slideView = 2;
-        break;
-
+    console.log(val);
+    if(val<=3){
+    $scope.slideView=$scope.slider.count;
+    console.log("i am in ",$scope.slideView);
     }
+
+    // switch (val) {
+    //   case 0:
+    //     $scope.slideView = 0;
+    //     console.log("i am in ",$scope.slideView);
+    //     break;
+    //   case 1:
+    //     $scope.slideView = 1;
+    //     console.log("i am in ",$scope.slideView);
+    //     // console.log($agentloginView)
+    //     break;
+    //   case 2:
+    //     $scope.slideView = 2;
+    //     console.log("i am in ",$scope.slideView);
+    //     break;
+
+    // }
   }
   //switching between cards ends
 

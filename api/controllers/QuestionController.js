@@ -10,20 +10,15 @@ var controller = {
             });
         }
     },
-    getOne : function(data,callback){
-        Question.getOne({
-            _id:data._id
-        }).lean().exec(function (err, found) {
-                        if(err){
-                            callback(err,null);
-                        }else{
-                            if(_.isEmpty(found)){
-                                callback(null,[]);
-                            }else{
-                                callback(null,found);
-                            }
-                        }
-                    });
+    getOne : function(req,res){
+        if (req.body) {
+            Question.getOne(req.body, res.callback);
+        } else {
+            res.json({
+                value: false,
+                data: "Invalid Request"
+            });
+        }
     },
 };
 module.exports = _.assign(module.exports, controller);
