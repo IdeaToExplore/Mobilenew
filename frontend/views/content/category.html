@@ -14,7 +14,7 @@
           <!--PHYSICAL PROBLEMS  -->
           <div class="questions-holder">
             <div class="col-md-4" ng-repeat="s in data | limitTo:8 track by $index">
-              <div class="question-card relate">
+              <div class="question-card relate" ng-if="slideView==1">
                 <span class="check"><i class="fa fa-check-circle"></i></span>
                 <div class="questioncard-image-holder">
                   <img src="https://s3.cashify.in/cashify/productLinePart/img/xxhdpi/5746e39ac23af.jpg" alt="" class="img-responsive">
@@ -27,7 +27,7 @@
 
 
             <!--ACCESSORIES  -->
-            <div class="" ng-if="slideView==1">
+            <div class="" ng-if="slideView==2">
               <div class="col-md-4" ng-repeat="a in data | limitTo:3 track by $index">
                 <div class="accessories-card relate">
                   <span class="check"><i class="fa fa-check-circle"></i></span>
