@@ -1,5 +1,6 @@
 var schema = new Schema({
     name:String,
+    img:String,
     brand:{
         type: Schema.Types.ObjectId,
         ref: 'Brand',
@@ -23,7 +24,7 @@ module.exports = mongoose.model('Subtype', schema);
 var exports = _.cloneDeep(require("sails-wohlig-service")(schema,'brand','brand'));
 var model = {
     getAll : function(data,callback){
-         Subtype.find().lean().deepPopulate("brand").exec(function (err, found) {
+         Subtype.find({brand:data.brand}).lean().deepPopulate("brand").exec(function (err, found) {
                         if(err){
                             callback(err,null);
                         }else{

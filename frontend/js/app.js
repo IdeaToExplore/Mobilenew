@@ -43,10 +43,11 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
             controller: 'GridCtrl'
         })
         .state('category', {
-            url: "/category",
+            url: "/category/:id",
             templateUrl: tempateURL,
             controller: 'CategoryCtrl'
         });
+        
     $urlRouterProvider.otherwise("/");
     $locationProvider.html5Mode(isproduction);
 });

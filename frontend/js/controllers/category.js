@@ -1,4 +1,4 @@
-myApp.controller('CategoryCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal, $http) {
+myApp.controller('CategoryCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal, $http,$stateParams) {
   $scope.template = TemplateService.getHTML("content/category.html");
   TemplateService.title = "Home"; //This is the Title of the Website
   $scope.navigation = NavigationService.getNavigation();
@@ -8,31 +8,41 @@ myApp.controller('CategoryCtrl', function ($scope, TemplateService, NavigationSe
   $scope.slider.count = 0;
    $scope.slideView = $scope.slider.count;
 
-  $scope.Productlist = [{
-    img: "https://s3.cashify.in/cashify/productLine/img/xxhdpi/587753dd18df2.png",
-    name: "mobile Phone",
-    id: "1"
-  }, {
-    img: "https://s3.cashify.in/cashify/productLine/img/xxhdpi/587753dd18df2.png",
-    name: "mobile Phone",
-    id: "2"
-  }, {
-    img: "https://s3.cashify.in/cashify/productLine/img/xxhdpi/587753dd18df2.png",
-    name: "mobile Phone",
-    id: "3"
-  }, {
-    img: "https://s3.cashify.in/cashify/productLine/img/xxhdpi/587753dd18df2.png",
-    name: "mobile Phone",
-    id: "4"
-  }, {
-    img: "https://s3.cashify.in/cashify/productLine/img/xxhdpi/587753dd18df2.png",
-    name: "mobile Phone",
-    id: "5"
-  }, {
-    img: "https://s3.cashify.in/cashify/productLine/img/xxhdpi/587753dd18df2.png",
-    name: "mobile Phone",
-    id: "6"
-  }]
+  // $scope.Productlist = [{
+  //   img: "https://s3.cashify.in/cashify/productLine/img/xxhdpi/587753dd18df2.png",
+  //   name: "mobile Phone",
+  //   id: "1"
+  // }, {
+  //   img: "https://s3.cashify.in/cashify/productLine/img/xxhdpi/587753dd18df2.png",
+  //   name: "mobile Phone",
+  //   id: "2"
+  // }, {
+  //   img: "https://s3.cashify.in/cashify/productLine/img/xxhdpi/587753dd18df2.png",
+  //   name: "mobile Phone",
+  //   id: "3"
+  // }, {
+  //   img: "https://s3.cashify.in/cashify/productLine/img/xxhdpi/587753dd18df2.png",
+  //   name: "mobile Phone",
+  //   id: "4"
+  // }, {
+  //   img: "https://s3.cashify.in/cashify/productLine/img/xxhdpi/587753dd18df2.png",
+  //   name: "mobile Phone",
+  //   id: "5"
+  // }, {
+  //   img: "https://s3.cashify.in/cashify/productLine/img/xxhdpi/587753dd18df2.png",
+  //   name: "mobile Phone",
+  //   id: "6"
+  // }]
+$scope.formData={};
+  $scope.viewProduct = function () {
+        $scope.formData.brand=$stateParams.id;
+        $scope.url = "Subtype/getAll";
+        NavigationService.apiCallWithData($scope.url,$scope.formData,function (data) {
+        console.log("data.brand", data);
+        $scope.Productlist = data.data;
+        });
+    }
+    $scope.viewProduct();
 
   $scope.nextSlide = function () {
     console.log($scope.slider.count, "data passed");

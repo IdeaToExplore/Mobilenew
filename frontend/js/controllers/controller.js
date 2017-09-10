@@ -1,4 +1,4 @@
-myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal,$http) {
+myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal,$http,$state) {
     $scope.template = TemplateService.getHTML("content/home.html");
     TemplateService.title = "Home"; //This is the Title of the Website
     $scope.navigation = NavigationService.getNavigation();
@@ -109,13 +109,12 @@ myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationServic
 
 
     // $.modalAnimate();
-$scope.runningNumber=function(data){
-setTimeout(function(){
-    ani.innerHTML = data;
-}, 1000);
-}
-    
-
+$scope.category=function(paramData){
+    console.log("inside category",paramData);
+              $state.go('category', {
+                        id: paramData
+                    })
+        }
     // COMPANY DATA JSON
     $scope.CompanyData = [{
         number: "369",

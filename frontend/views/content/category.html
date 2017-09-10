@@ -5,13 +5,13 @@
     <div class="mobile-category-holder" ng-if="!questionHolder">
       <div class="row">
         <div class="mobile-category-scroll">
-          <div class="col-md-2" ng-repeat="mobile in data1 track by $index" ng-click="showRam()" ng-if="!showramSize">
+          <div class="col-md-2" ng-repeat="mobile in Productlist track by $index" ng-click="showRam()" ng-if="!showramSize">
             <div class="mobile-category-card">
               <!-- <i class="fa fa-5x fa-mobile" ></i> -->
               <div class="mobile-category-imageholder">
-                <img ng-src="https://s3.cashify.in/cashify/productLine/img/xxhdpi/587753dd18df2.png" alt="" class="img-responsive">
+                <img ng-src="http://localhost:1337/api/upload/readFile?file={{mobile.img}}" alt="" class="img-responsive">
               </div>
-              <p class="text-capitalize text-center">Samsung</p>
+              <p class="text-capitalize text-center">{{mobile.name}}</p>
             </div>
           </div>
           <div class="col-md-2" ng-repeat="ramsize in data1 | limitTo:5 track by $index" ng-if="showramSize && !questionHolder" ng-click="question()">
