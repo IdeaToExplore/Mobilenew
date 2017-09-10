@@ -1,24 +1,39 @@
 <header hide-on-scrol>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">
-                <meta name="viewport" content="width=device-width, initial-scale=1">
-                <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-                <a class="navbar-brand" ui-sref="home"><img src="/img/logo.png" alt="logo" width="20"> </a>
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="navbar-header">
+                        <meta name="viewport" content="width=device-width, initial-scale=1">
+                        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                        <a class="navbar-brand" ui-sref="home"><img src="/img/logo.png" alt="logo" width="20"> </a>
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <div class="collapse navbar-collapse" id="nav-collapse">
+                        <!-- <div ng-include="template.menu" class="template menu"></div> -->
+                        <ul class="list-inline navbar-nav">
+                            <li class="nav-item" ng-click="login()">Login</li>
+                        </ul>
+                    </div>
+
+                </div>
             </div>
 
-            <div class="collapse navbar-collapse" id="nav-collapse">
-                <div ng-include="template.menu" class="template menu"></div>
-            </div>
+
+
             <!-- <div class="">
                 <p ng-click="login()">Login</p>
             </div> -->
+            <!-- <ul class="list-inline">
+                <li>Login</li>
+            </ul> -->
         </div>
     </nav>
 </header>

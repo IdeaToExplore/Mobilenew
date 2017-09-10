@@ -1,15 +1,32 @@
-<div class="modal-header">
-  <h3 class="modal-title" id="modal-title">I'm a modal!</h3>
-</div>
-<div class="modal-body" id="modal-body">
-  <ul>
-    <li ng-repeat="item in $ctrl.items">
-      <a href="#" ng-click="$event.preventDefault(); $ctrl.selected.item = item">{{ item }}</a>
-    </li>
-  </ul>
-  Selected: <b>{{ $ctrl.selected.item }}</b>
-</div>
-<div class="modal-footer">
-  <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
-  <button class="btn btn-warning" type="button" ng-click="$dismiss()">Cancel</button>
+<div class="login-modal-page">
+  <div class="modal-body" id="modal-body">
+    <div class="modal-container">
+      <div class="row">
+        <!--IMAGE OF MODAL  -->
+        <div class="col-md-6">
+          <!--IMAGE HOLDER  -->
+          <div class="image-holder-modal">
+            <img src="img/deepika.jpg" alt="" class="img-responsive">
+          </div>
+          <!--IMAGE HOLDER END  -->
+        </div>
+        <!--IMAGE OF MODAL END -->
+
+        <!--FORM PAGE  -->
+        <div class="col-md-6">
+          <form>
+            <div class="form-group">
+              <label class="form-control-label" for="formGroupExampleInput">Example label</label>
+              <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+            </div>
+            <div class="form-group">
+              <label class="form-control-label" for="formGroupExampleInput2">Another label</label>
+              <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+            </div>
+          </form>
+        </div>
+        <!--FORM PAGE END  -->
+      </div>
+    </div>
+  </div>
 </div>

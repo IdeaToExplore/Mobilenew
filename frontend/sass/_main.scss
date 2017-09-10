@@ -14,6 +14,7 @@ body {
     padding-top: 70px;
 }
 
+
 img.loading {
     text-align: center;
     opacity: 1;
@@ -183,6 +184,21 @@ header {
     border-left: 2px solid #fff;
     border-right: 2px solid #fff;
 }
+
+.outline-button{
+    padding: 5px 25px;
+      border: 1px solid #000072;
+    background-color: transparent;
+    color:#000072;
+    &:hover,
+    &:active,
+    &:focus {
+        border: 1px solid #000072;
+        background-color: transparent;
+        color: #000072;
+        outline: none;
+    }
+}
 // LANDING PAGE
 .landingpage{
     min-height: 200vh;
@@ -319,11 +335,53 @@ header {
 // LANDING PAGE END
 
 // CATEGORY PAGE
+
+.mobile-category-holder{
+    height:500px;
+    box-shadow: 0px 0px 8px #e1e1e1;
+    margin: 50px 0px;
+    padding: 30px 20px;
+    .mobile-category-scroll{
+        height: 360px;
+        overflow-y: auto;
+    }
+    .mobile-category-card{
+        padding: 10px;
+        margin: 5px 0px;
+        box-shadow: 0px 0px 8px #e5e5e5;
+        cursor: pointer;
+    }
+    .mobile-category-imageholder{
+        width: 70px;
+        height: 70px;
+        margin: 0 auto 10px;
+        padding-bottom: 10px;
+        overflow: hidden;
+    }
+    .ram-category-card{
+        @extend .mobile-category-card;
+    }
+    .ram-category-imageholder{
+        @extend .mobile-category-imageholder;
+    }
+}
+
 .category-page{
     min-height: 100vh;
+    ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    }
+   ::-webkit-scrollbar-track {
+    background-color: transparent;
+    }
+   ::-webkit-scrollbar-thumb {
+    background-color: #e1e1e1;
+    }
     .category-question-holder{
-        height:450px;
-        border: 1px solid #000;
+        height:500px;
+        // border: 1px solid #ccc;
+        box-shadow: 0px 0px 8px #e1e1e1;
         margin: 50px 0px;
         padding: 30px 20px;
     }
@@ -336,7 +394,7 @@ header {
         margin: 0 auto;
     }
     .questions-holder{
-        height: 350px;
+        height: 360px;
         overflow-y: auto;
     }
     .question-card{
@@ -367,6 +425,36 @@ header {
         padding-top: 10px;
     }
 }
+
+.category-button-holder{
+    margin-top: 30px;
+}
+
+// PHYSICAL CARD
+.product-condition-holder{
+    margin: 10px 0px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    .productcondition-imageholder{
+        width: 25%;
+        vertical-align: middle;
+    }
+    .productcondition-image{
+        width: 45px;
+        height: 80px;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+    .productcontion-content{
+        width: 65%;
+        vertical-align: middle;
+        p{
+            margin: 0 auto;
+            font-size: 12px;
+        }
+    }
+}
+// PHYSICAL CARD END
 // CATEGORY PAGE END
 
 // ABOUT_US PAGE

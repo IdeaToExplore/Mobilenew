@@ -1,9 +1,37 @@
 <div class="category-page">
   <div class="container">
-    <!--CATEGORY QUESTION PAGE  -->
-    <div class="category-question-holder relate">
+
+    <!--MOBIBLE CATEGORY  -->
+    <div class="mobile-category-holder" ng-if="!questionHolder">
       <div class="row">
-        <div class="col-md-5">
+        <div class="mobile-category-scroll">
+          <div class="col-md-2" ng-repeat="mobile in data1 track by $index" ng-click="showRam()" ng-if="!showramSize">
+            <div class="mobile-category-card">
+              <!-- <i class="fa fa-5x fa-mobile" ></i> -->
+              <div class="mobile-category-imageholder">
+                <img ng-src="https://s3.cashify.in/cashify/productLine/img/xxhdpi/587753dd18df2.png" alt="" class="img-responsive">
+              </div>
+              <p class="text-capitalize text-center">Samsung</p>
+            </div>
+          </div>
+          <div class="col-md-2" ng-repeat="ramsize in data1 | limitTo:5 track by $index" ng-if="showramSize && !questionHolder" ng-click="question()">
+            <div class="ram-category-card">
+              <div class="ram-category-imageholder">
+                <img src="https://s3.cashify.in/cashify/brand/img/xxhdpi/572c45cee30c1.jpg" alt="ram-size" class="img-responsive">
+              </div>
+              <p class="text-uppercase text-center">8 GB</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <!--MOBIBLE CATEGORY END  -->
+    <!--CATEGORY QUESTION PAGE  -->
+    <div class="category-question-holder relate" ng-if="questionHolder">
+      <div class="row">
+        <div class="col-md-5 nf">
           <div class="selected-product-holder ">
             <div class="product-image-holder get-center">
               <img src="img/deepika.jpg" alt="" class="img-responsive">
@@ -13,8 +41,8 @@
         <div class="col-md-7">
           <!--PHYSICAL PROBLEMS  -->
           <div class="questions-holder">
-            <div class="col-md-4" ng-repeat="s in data | limitTo:8 track by $index">
-              <div class="question-card relate" ng-if="slideView==1">
+            <div class="col-md-4" ng-repeat="s in data | limitTo:8 track by $index" ng-if="slideView==0">
+              <div class="question-card relate">
                 <span class="check"><i class="fa fa-check-circle"></i></span>
                 <div class="questioncard-image-holder">
                   <img src="https://s3.cashify.in/cashify/productLinePart/img/xxhdpi/5746e39ac23af.jpg" alt="" class="img-responsive">
@@ -27,31 +55,44 @@
 
 
             <!--ACCESSORIES  -->
-            <div class="" ng-if="slideView==2">
-              <div class="col-md-4" ng-repeat="a in data | limitTo:3 track by $index">
-                <div class="accessories-card relate">
-                  <span class="check"><i class="fa fa-check-circle"></i></span>
-                  <div class="accessoriescard-imageholder">
-                    <img src="https://s3.cashify.in/cashify/productLinePart/img/xxhdpi/5746a229460c0.png" alt="" class="img-responsive">
-                  </div>
-                  <div class="accessoriescard-content text-center">
-                    <p>Charger</p>
-                  </div>
+            <!-- <div class=""> -->
+            <div class="col-md-4" ng-repeat="a in data | limitTo:3 track by $index" ng-if="slideView==1">
+              <div class="accessories-card relate">
+                <span class="check"><i class="fa fa-check-circle"></i></span>
+                <div class="accessoriescard-imageholder">
+                  <img src="https://s3.cashify.in/cashify/productLinePart/img/xxhdpi/5746a229460c0.png" alt="" class="img-responsive">
+                </div>
+                <div class="accessoriescard-content text-center">
+                  <p>Charger</p>
                 </div>
               </div>
             </div>
+            <!-- </div> -->
             <!--ACCESSORIES END  -->
 
             <!--CONDITION  -->
-            <div class="col-md-6" hidden>
-              <div class="product-condition-holder">
-                <div class="inline-block productcondition-imageholder">
-                  <div class="productcondition-image">
-                    <img src="https://s3.cashify.in/cashify/productLinePartVariation/img/xxhdpi/5746a4177f015.png" alt="" class="img-responsive">
+            <div class="condition" ng-if="slideView==2">
+              <!--CONDITION HEAD  -->
+              <div class="condition-head">
+                <h5 class="m-clear">Tablet's Overall Condition</h5>
+                <p class="m-clear">Please choose appropriate condition to get accurate quote</p>
+              </div>
+              <!--CONDITION HEAD END  -->
+              <div class="col-md-6" ng-repeat="s in data | limitTo:3 track by $index">
+                <div class="product-condition-holder">
+                  <div class="inline-block productcondition-imageholder">
+                    <div class="productcondition-image">
+                      <img src="https://s3.cashify.in/cashify/productLinePartVariation/img/xxhdpi/5746a4177f015.png" alt="" class="img-responsive">
+                    </div>
                   </div>
-                </div>
-                <div class="inline-block productcontion-content">
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum, veritatis.</p>
+                  <div class="inline-block productcontion-content">
+                    <h5>Good</h5>
+                    <p>Minor scratches Normal signs of usage External housing intact with no broken ports (USB, headphones etc)
+                      No dents or cracks on panel</p>
+                  </div>
+                  <div class="inline-block carrot-button">
+                    <i class="fa fa-caret-right" aria-hidden="true"></i>
+                  </div>
                 </div>
               </div>
             </div>
@@ -61,8 +102,20 @@
           <!--PHYSICAL PROBLEMS END  -->
 
           <!-- <pre>{{view}}</pre> -->
+          <div class="row clearfix category-button-holder">
+            <div class="pull-left">
+              <div class="preview-button">
+                <button ng-click="prevSlide()" class="btn outline-button">Prev</button>
+              </div>
+            </div>
+            <div class="pull-right">
+              <div class="next-button">
+                <button ng-click="nextSlide()" class="btn outline-button ">Next</button>
+              </div>
+            </div>
+          </div>
           <div class="text-right">
-            <button type="button" ng-click="nextSlide()" class="btn btn-success">Success</button>
+
           </div>
         </div>
       </div>
