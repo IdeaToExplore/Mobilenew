@@ -6,6 +6,7 @@ myApp.controller('CategoryCtrl', function ($scope, TemplateService, NavigationSe
   $scope.data1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
   $scope.slider = {};
   $scope.slider.count = 0;
+   $scope.slideView = $scope.slider.count;
 
   $scope.Productlist = [{
     img: "https://s3.cashify.in/cashify/productLine/img/xxhdpi/587753dd18df2.png",
@@ -35,14 +36,18 @@ myApp.controller('CategoryCtrl', function ($scope, TemplateService, NavigationSe
 
   $scope.nextSlide = function () {
     console.log($scope.slider.count, "data passed");
+    if($scope.slider.count<=1){
     ++$scope.slider.count;
+    }
     // $jstorate
     console.log($scope.slider.count, "data passed......");
     $scope.viewslide($scope.slider.count);
   }
 
   $scope.prevSlide = function () {
+    if($scope.slider.count>0){
     --$scope.slider.count;
+    }
     $scope.viewslide($scope.slider.count);
   }
 
@@ -50,7 +55,7 @@ myApp.controller('CategoryCtrl', function ($scope, TemplateService, NavigationSe
     var val = data;
     console.log("in switch")
     console.log(val);
-    if (val <= 3) {
+    if (val<3) {
       $scope.slideView = $scope.slider.count;
       console.log("i am in ", $scope.slideView);
     }
