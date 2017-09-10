@@ -59,7 +59,7 @@
                         <div class="product-holder">
                             <!-- <i class="fa fa-5x fa-mobile" ></i> -->
                             <div class="product-imageholder">
-                                <img src="{{product.img}}" alt="" class="img-responsive">
+                                <img ng-src="http://localhost:1337/api/upload/readFile?file={{product.logo}}" alt="" class="img-responsive">
                             </div>
                             <p class="text-capitalize"> {{product.name}}</p>
                         </div>
@@ -76,7 +76,7 @@
                         <div class="swiper-container landingpage-products-display">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide" style="height: 270px;" ng-repeat="s in data track by $index">
-                                    <img src="img/ad.jpg" alt="" class="img-responsive">
+                                    <img ng-src="img/ad.jpg" alt="" class="img-responsive">
                                 </div>
                             </div>
                             <!-- Add Pagination -->
@@ -168,7 +168,7 @@
                 <div class="col-md-4 col-sm-4 col-xs-12" ng-repeat="data in CompanyData track by $index">
                     <div class="company-data-holder text-center" ng-class="{'border-rl':$index===1}">
                         <div class="company-data-number">
-                            <span>{{data.number}}</span> <span>{{data.words}}</span>
+                             <span>{{data.number}}</span>  <span>{{data.words}}</span>
                         </div>
                         <div class="company-data-head">
                             <p>{{data.head}}</p>
